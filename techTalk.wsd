@@ -1,0 +1,20 @@
+@startuml
+title FMS Jobs
+actor UI
+participant "Controllers" as A << (C,#ADD1B2) FMSType >>
+database "Fms base" as B
+UI -[#Purple]> A: doSomething(\n param1: ParamForAType)
+activate A
+    
+    A -[#DarkOliveGreen]> B: //**<color:DarkGreen> getInfo</color>**//(param1.type)
+    activate B
+    note over UI
+        if something wrong:
+        call Michail
+    end note
+    A <-[#0000FF]- B: ""integrationType""
+    deactivate B
+
+UI <-[#YellowGreen]- A: result:String
+deactivate A
+@enduml
